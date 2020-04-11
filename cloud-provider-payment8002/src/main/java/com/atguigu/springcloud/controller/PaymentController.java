@@ -5,11 +5,9 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author boyuxin
@@ -25,9 +23,6 @@ public class PaymentController {
 
     @Value("${server.port}")
     private String servicePort;
-
-    @Resource
-    private DiscoveryClient discoveryClient;
 
     //只传给前端CommonResult，不需要前端了解其他的组件
     @PostMapping(value = "/payment/create")
@@ -49,12 +44,5 @@ public class PaymentController {
         }else{
             return new CommonResult(444,"没有对应记录,查询ID："+id,null);
         }
-    }
-
-    @GetMapping(value = "/payment/discovery")
-    public Object discoverty(){
-        List<String> services = discoveryClient.getServices();
-        services.stream().forEach( x -> log.info("服务包含 : ", x));
-        return this.discoveryClient;
     }
 }
