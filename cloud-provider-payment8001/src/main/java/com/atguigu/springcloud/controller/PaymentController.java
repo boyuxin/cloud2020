@@ -57,4 +57,11 @@ public class PaymentController {
         services.stream().forEach( x -> log.info("服务包含 : ", x));
         return this.discoveryClient;
     }
+
+    @GetMapping(value = "/payment/getlb")
+    public String getlb(){
+        return servicePort;
+    }
+
+
 }
