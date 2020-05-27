@@ -33,7 +33,7 @@ public class PaymentController {
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
-        log.info("*****插入结果："+result);
+        log.info("*****插入  v 顶顶顶 结果："+result);
         if(result > 0){
             return new CommonResult(200,"插入数据成功 , serverPort",servicePort+ "     "+ result);
         }else{

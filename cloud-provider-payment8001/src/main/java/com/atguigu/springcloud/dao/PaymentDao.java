@@ -8,6 +8,6 @@ public interface PaymentDao {
 
     int create(Payment payment);
 
-    Payment getPaymentById(@Param("id") Long id);
+    Payment    getPaymentById(@Param("id") Long id);
 
 }
